@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import ClienteDataService from "../services/TutorialDataService";
+import ClienteDataService from "../services/ClienteDataService";
 
 
 export default {
