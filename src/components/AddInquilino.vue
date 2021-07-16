@@ -3,14 +3,14 @@
   <div class="submit-form">
     <div v-if="!submitted">
       <div class="form-group">
-        <label for="nome">Nome do cliente</label>
+        <label for="nome">Nome do inquilino</label>
         <input
           type="text"
           class="form-control"
           id="nome"
           required
-          v-model="cliente.nome"
-          name="title"
+          v-model="inquilino.nome"
+          name="nome"
         />
       </div>
 
@@ -23,8 +23,8 @@
           class="form-control"
           id="cpf"
           required
-          v-model="cliente.cpf"
-          name="description"
+          v-model="inquilino.cpf"
+          name="cpf"
         />
       </div>
       <div class="form-group">
@@ -34,8 +34,8 @@
           class="form-control"
           id="data_nascimento"
           required
-          v-model="cliente.data_nascimento"
-          name="description"
+          v-model="inquilino.data_nascimento"
+          name="data_nascimento"
         />
       </div> <br> <br>
 
@@ -43,22 +43,22 @@
     </div>
 
     <div v-else>
-      <h4>Voce cadastrou um cliente com sucesso!</h4>
+      <h4>Voce cadastrou um inquilino com sucesso!</h4>
       <button class="btn btn-success" @click="newTutorial">Add</button>
     </div>
   </div>
 </template>
 
 <script>
-import ClienteDataService from "../services/ClienteDataService";
+import InquilinoDataService from "../services/InquilinoDataService"; //é necessario criar inquilino dataService
 
 
 export default {
     /* eslint-disable */
-  name: "add-cliente",
+  name: "add-inquilino",
   data() {
     return {
-      cliente: {
+      inquilino: {
         id: null,
         nome: "",
         cpf: "",
@@ -69,14 +69,14 @@ export default {
     };
   },
   methods: {
-    saveCliente() {
+    saveInquilino() {
       var data = {
-        nome: this.cliente.nome,
-        cpf: this.cliente.cpf,
-        data_nascimento: this.cliente.data_nascimento
+        nome: this.inquilino.nome,
+        cpf: this.inquilino.cpf,
+        data_nascimento: this.inquilino.data_nascimento
       };
 
-      ClienteDataService.create(data)
+      InquilinoDataService.create(data)
         .then(response => {
           this.cliente.cpf = response.data.cpf;
           console.log(response.data);
@@ -87,7 +87,7 @@ export default {
         });
     },
     
-    newCliente() {
+    newInquilino() {
       this.submitted = false;
       this.cliente = {};
 

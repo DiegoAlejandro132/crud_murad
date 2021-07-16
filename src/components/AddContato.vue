@@ -3,39 +3,41 @@
   <div class="submit-form">
     <div v-if="!submitted">
       <div class="form-group">
-        <label for="nome">Nome do cliente</label>
+        <label for="nome">Nome do contato</label>
         <input
           type="text"
           class="form-control"
           id="nome"
           required
-          v-model="cliente.nome"
-          name="title"
+          v-model="contato.nome"
+          name="nome"
         />
       </div>
 
       <div class="form-group">
-        <label for="cpf">CPF</label>
-        <input
-          type="text"
-          maxlength="14"
-          placeholder="EX: 111.222.333-44"
+        <label for="tipo_contato">Informe o tipo de contato</label>
+        <select
           class="form-control"
-          id="cpf"
+          id="tipo_contato"
+          placeholder="Tipo de contato"
           required
-          v-model="cliente.cpf"
-          name="description"
-        />
+          v-model="contato.tipo_contato"
+          name="tipo_contato"
+        >
+            <option value="telefone">Telefone</option>
+            <option value="email">E-mail</option>
+
+        </select>
       </div>
       <div class="form-group">
-        <label for="data_nascimento">Data de nascimento</label>
+        <label for="contato">Informe o contato</label>
         <input
-        type="date"
+        type="text"
           class="form-control"
-          id="data_nascimento"
+          id="contato"
           required
-          v-model="cliente.data_nascimento"
-          name="description"
+          v-model="contato.contato"
+          name="data_nascimento"
         />
       </div> <br> <br>
 
@@ -43,42 +45,42 @@
     </div>
 
     <div v-else>
-      <h4>Voce cadastrou um cliente com sucesso!</h4>
+      <h4>Voce cadastrou um contato com sucesso!</h4>
       <button class="btn btn-success" @click="newTutorial">Add</button>
     </div>
   </div>
 </template>
 
 <script>
-import ClienteDataService from "../services/ClienteDataService";
+import ContatoDataService from "../services/ContatoDataService"; //é necessario criar contato dataService
 
 
 export default {
     /* eslint-disable */
-  name: "add-cliente",
+  name: "add-contato",
   data() {
     return {
-      cliente: {
+      contato: {
         id: null,
         nome: "",
-        cpf: "",
-        data_nascimento: "",
+        tipo: "",
+        contato: "",
         published: false
       },
       submitted: false
     };
   },
   methods: {
-    saveCliente() {
+    saveContato() {
       var data = {
-        nome: this.cliente.nome,
-        cpf: this.cliente.cpf,
-        data_nascimento: this.cliente.data_nascimento
+        nome: this.contato.nome,
+        tipo: this.contato.tipo,
+        contato: this.contato.contato
       };
 
-      ClienteDataService.create(data)
+      ContatoDataService.create(data)
         .then(response => {
-          this.cliente.cpf = response.data.cpf;
+          this.contato.nome = response.data.nome;
           console.log(response.data);
           this.submitted = true;
         })
@@ -87,7 +89,7 @@ export default {
         });
     },
     
-    newCliente() {
+    newContato() {
       this.submitted = false;
       this.cliente = {};
 
