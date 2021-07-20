@@ -1,33 +1,33 @@
 import http from "../http-common";
 
-class TutorialDataService {
+class InquilinoDataService {
   getAll() {
-    return http.get("/tutorials");
+    return http.get("/inquilino");
   }
 
-  get(id) {
-    return http.get(`/tutorials/${id}`);
+  get(cpf) {
+    return http.get(`/inquilino/${cpf}`);
   }
 
   create(data) {
-    return http.post("/tutorials", data);
+    return http.post("/inquilino", data);
   }
 
-  update(id, data) {
-    return http.put(`/tutorials/${id}`, data);
+  update(cpf, data) {
+    return http.put(`/inquilino/${cpf}`, data);
   }
 
-  delete(id) {
-    return http.delete(`/tutorials/${id}`);
+  delete(cpf) {
+    return http.delete(`/inquilino/${cpf}`);
   }
 
   deleteAll() {
-    return http.delete(`/tutorials`);
+    return http.delete(`/inquilino`);
   }
 
-  findByTitle(title) {
-    return http.get(`/tutorials?title=${title}`);
+  findByTitle(cpf) {
+    return http.get(`/inquilino?title=${cpf}`);
   }
 }
 
-export default new TutorialDataService();
+export default new InquilinoDataService();

@@ -1,33 +1,33 @@
 import http from "../http-common";
 
-class TutorialDataService {
+class EnderecoDataService {
   getAll() {
-    return http.get("/tutorials");
+    return http.get("/endereco");
   }
 
   get(id) {
-    return http.get(`/tutorials/${id}`);
+    return http.get(`/endereco/${id}`);
   }
 
   create(data) {
-    return http.post("/tutorials", data);
+    return http.post("/endereco", data);
   }
 
   update(id, data) {
-    return http.put(`/tutorials/${id}`, data);
+    return http.put(`/endereco/${id}`, data);
   }
 
   delete(id) {
-    return http.delete(`/tutorials/${id}`);
+    return http.delete(`/endereco/${id}`);
   }
 
   deleteAll() {
-    return http.delete(`/tutorials`);
+    return http.delete(`/endereco`);
   }
 
-  findByTitle(title) {
-    return http.get(`/tutorials?title=${title}`);
+  findByTitle(nome) {
+    return http.get(`/endereco?title=${nome}`);
   }
 }
 
-export default new TutorialDataService();
+export default new EnderecoDataService();
