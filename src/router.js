@@ -18,8 +18,13 @@ export default new Router({
       component: () => import("./components/Tutorial")
     },
     {
-      path: "/add",
+      path: "/add-contato",
       name: "add",
+      component: () => import("./components/AddContato")
+    },
+    {
+      path: "/add-cliente",
+      name: "addCliente",
       component: () => import("./components/AddCliente")
     }
   ]

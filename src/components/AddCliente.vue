@@ -44,7 +44,7 @@
 
     <div v-else>
       <h4>Voce cadastrou um cliente com sucesso!</h4>
-      <button class="btn btn-success" @click="newClientesaveCliente">Add</button>
+      <button class="btn btn-success" @click="newCliente">Add</button>
     </div>
   </div>
 </template>
@@ -90,7 +90,6 @@ export default {
     newCliente() {
       this.submitted = false;
       this.cliente = {};
-
     }
   }
 };
