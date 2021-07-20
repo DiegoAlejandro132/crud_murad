@@ -19,13 +19,23 @@ export default new Router({
     },
     {
       path: "/add-contato",
-      name: "add",
+      name: "addContato",
       component: () => import("./components/AddContato")
     },
     {
       path: "/add-cliente",
       name: "addCliente",
       component: () => import("./components/AddCliente")
-    }
+    },
+    {
+      path: "/add-endereco",
+      name: "addEndereco",
+      component: () => import("./components/AddCliente")
+    },
+    {
+      path: "/add-inquilino",
+      name: "addInquilino",
+      component: () => import("./components/AddCliente")
+    },
   ]
 });
