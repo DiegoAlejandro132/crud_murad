@@ -39,12 +39,12 @@
         />
       </div> <br> <br>
 
-      <button @click="saveTutorial" class="btn btn-success">Confirmar</button>
+      <button @click="saveInquilino" class="btn btn-success">Confirmar</button>
     </div>
 
     <div v-else>
       <h4>Voce cadastrou um inquilino com sucesso!</h4>
-      <button class="btn btn-success" @click="newTutorial">Add</button>
+      <button class="btn btn-success" @click="newInquilino">Add</button>
     </div>
   </div>
 </template>

@@ -93,12 +93,12 @@
       </div>
 
       <br> <br>
-      <button @click="saveTutorial" class="btn btn-success">Confirmar</button>
+      <button @click="saveEndereco" class="btn btn-success">Confirmar</button>
     </div>
 
     <div v-else>
       <h4>Voce cadastrou um endereco com sucesso!</h4>
-      <button class="btn btn-success" @click="newTutorial">Add</button>
+      <button class="btn btn-success" @click="newEndereco">Add</button>
     </div>
   </div>
 </template>
