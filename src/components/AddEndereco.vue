@@ -142,7 +142,7 @@ export default {
 
       EnderecoDataService.create(data)
         .then(response => {
-          this.endereco.nome = response.data.nome;
+          this.endereco.nome = response.data.nomeEndereco;
           console.log(response.data);
           this.submitted = true;
         })

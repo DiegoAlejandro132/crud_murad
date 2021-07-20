@@ -71,14 +71,14 @@ export default {
   methods: {
     saveInquilino() {
       var data = {
-        nome: this.inquilino.nome,
+        nomeInquilino: this.inquilino.nome,
         cpf: this.inquilino.cpf,
-        data_nascimento: this.inquilino.data_nascimento
+        dataNascimentoInquilino: this.inquilino.data_nascimento
       };
 
       InquilinoDataService.create(data)
         .then(response => {
-          this.cliente.cpf = response.data.cpf;
+          this.inquilino.cpf = response.data.cpfInquilino;
           console.log(response.data);
           this.submitted = true;
         })
@@ -89,7 +89,7 @@ export default {
     
     newInquilino() {
       this.submitted = false;
-      this.cliente = {};
+      this.inquilino = {};
 
     }
   }
