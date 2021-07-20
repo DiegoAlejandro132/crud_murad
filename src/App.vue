@@ -7,18 +7,18 @@
           <router-link to="/tutorials" class="nav-link">Tutorials. (tutoriais)</router-link>
         </li>
         <li class="nav-item">
-          <router-link to="/add-contato" class="nav-link">AddCcontato</router-link>
+          <router-link to="/add-contato" class="nav-link">Add-Contato</router-link>
         </li>
         <li class="nav-item">
-          <router-link to="/add-contato" class="nav-link">AddCcontato</router-link>
+          <router-link to="/add-cliente" class="nav-link">Add-Cliente</router-link>
         </li>
         <li class="nav-item">
-          <router-link to="/add-contato" class="nav-link">AddCcontato</router-link>
+          <router-link to="/add-endereco" class="nav-link">Add-Endereco</router-link>
         </li>
         <li class="nav-item">
-          <router-link to="/add-contato" class="nav-link">AddCcontato</router-link>
+          <router-link to="/add-inquilino" class="nav-link">Add-Inquilino</router-link>
         </li>
-        
+
       </div>
     </nav>
 
