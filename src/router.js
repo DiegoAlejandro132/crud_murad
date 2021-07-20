@@ -30,12 +30,12 @@ export default new Router({
     {
       path: "/add-endereco",
       name: "addEndereco",
-      component: () => import("./components/AddCliente")
+      component: () => import("./components/AddEndereco")
     },
     {
       path: "/add-inquilino",
       name: "addInquilino",
-      component: () => import("./components/AddCliente")
+      component: () => import("./components/AddInquilino")
     },
   ]
 });
