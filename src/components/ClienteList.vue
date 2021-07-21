@@ -3,7 +3,7 @@
     <div class="col-md-8">
       <div class="input-group mb-3">
         <input type="text" class="form-control" placeholder="Insira o CPF"
-          v-model="title"/>
+          v-model="cpf"/>
         <div class="input-group-append">
           <button class="btn btn-outline-secondary" type="button"
             @click="searchCPF"
@@ -47,7 +47,7 @@
         </div>
 
         <a class="badge badge-warning"
-          :href="'/tutorials/' + currentCliente.id"
+          :href="'/clientes/' + currentCliente.id"
         > 
           Edit
         </a>

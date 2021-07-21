@@ -33,6 +33,11 @@ export default new Router({
       component: () => import("./components/ClienteList")
     },
     {
+      path: "/cliente-detalhes",
+      name: "cliente-detalhes",
+      component: () => import("./components/Cliente")
+    },
+    {
       path: "/add-endereco",
       name: "addEndereco",
       component: () => import("./components/AddEndereco")
