@@ -35,11 +35,11 @@
       </div>
     </form>
 
-    <button class="badge badge-danger mr-2" @click="deleteContato">
+    <button style="background-color:red" class="badge badge-danger mr-2" @click="deleteContato">
       Delete
     </button>
 
-    <button type="submit" class="badge badge-success" @click="updateContato">
+    <button style="background-color:blue" type="submit" class="badge badge-success" @click="updateContato">
       Update
     </button>
     <p>{{ message }}</p>

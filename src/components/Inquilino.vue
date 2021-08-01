@@ -25,13 +25,13 @@
 
     </form>
 
-    <button class="badge badge-danger mr-2"
+    <button style="background-color:red" class="badge badge-danger mr-2"
       @click="deleteInquilino"
     >
       Delete
     </button>
 
-    <button type="submit" class="badge badge-success"
+    <button style="background-color:blue" type="submit" class="badge badge-success"
       @click="updateInquilino"
     >
       Update
