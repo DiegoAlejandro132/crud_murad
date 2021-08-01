@@ -42,9 +42,6 @@
         <div>
           <label><strong>Data de nascimento:</strong></label> {{ currentInquilino.dataNascimentoInquilino }}
         </div>
-        <div>
-          <label><strong>Status:</strong></label> {{ currentInquilino.published ? "Published" : "Pending" }}
-        </div>
 
         <a style="color:blue" class="badge badge-warning"
           :href="'/inquilino_detalhes/' + currentInquilino.id"

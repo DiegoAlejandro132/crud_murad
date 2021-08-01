@@ -62,8 +62,7 @@ export default {
         id: null,
         nome: "",
         cpf: "",
-        data_nascimento: "",
-        published: false
+        data_nascimento: ""
       },
       submitted: false
     };

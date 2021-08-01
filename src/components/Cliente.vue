@@ -21,24 +21,7 @@
           v-model="currentCliente.dataNascimentoCliente"
         />
       </div>
-
-      <div class="form-group">
-        <label><strong>Status:</strong></label>
-        {{ currentCliente.published ? "Published" : "Pending" }}
-      </div>
     </form>
-
-    <button class="badge badge-primary mr-2"
-      v-if="currentCliente.published"
-      @click="updatePublished(false)"
-    >
-      UnPublish
-    </button>
-    <button v-else class="badge badge-primary mr-2"
-      @click="updatePublished(true)"
-    >
-      Publish
-    </button>
 
     <button class="badge badge-danger mr-2"
       @click="deleteCliente"
@@ -77,25 +60,6 @@ export default {
       ClienteDataService.get(id)
         .then(response => {
           this.currentCliente = response.data[0]
-          console.log(response.data)
-        })
-        .catch(e => {
-          console.log(e)
-        })
-    },
-
-    updatePublished (status) {
-      var data = {
-        id: this.currentCliente.id,
-        nome: this.currentCliente.nome,
-        cpf: this.currentCliente.cpf,
-        data_nascimento: this.currentCliente.data_nascimento,
-        published: status
-      }
-
-      ClienteDataService.update (this.currentCliente.id, data)
-        .then(response => {
-          this.currentCliente.published = status
           console.log(response.data)
         })
         .catch(e => {

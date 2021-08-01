@@ -121,8 +121,7 @@ export default {
         bairro:"",
         cidade:"",
         estado:"",
-        complemento:"",
-        published: false
+        complemento:""
       },
       submitted: false
     };

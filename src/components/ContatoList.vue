@@ -42,10 +42,7 @@
         <div>
           <label><strong>Contato:</strong></label> {{ currentContato.contato }}
         </div>
-        <div>
-          <label><strong>Status:</strong></label> {{ currentContato.published ? "Published" : "Pending" }}
-        </div>
-
+       
         <a style="color:blue" class="badge badge-warning"
           :href="'/contato_detalhes/' + currentContato.id"
         >

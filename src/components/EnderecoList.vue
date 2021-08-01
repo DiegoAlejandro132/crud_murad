@@ -57,10 +57,7 @@
         <div>
           <label><strong>Complemento:</strong></label> {{ currentEndereco.complemento }}
         </div>
-        <div>
-          <label><strong>Status:</strong></label> {{ currentEndereco.published ? "Published" : "Pending" }}
-        </div>
-
+    
         <a style="color:blue" class="badge badge-warning"
           :href="'/endereco_detalhes/' + currentEndereco.id"
         >

@@ -23,23 +23,7 @@
         />
       </div>
 
-      <div class="form-group">
-        <label><strong>Status:</strong></label>
-        {{ currentInquilino.published ? "Published" : "Pending" }}
-      </div>
     </form>
-
-    <button class="badge badge-primary mr-2"
-      v-if="currentInquilino.published"
-      @click="updatePublished(false)"
-    >
-      UnPublish
-    </button>
-    <button v-else class="badge badge-primary mr-2"
-      @click="updatePublished(true)"
-    >
-      Publish
-    </button>
 
     <button class="badge badge-danger mr-2"
       @click="deleteInquilino"
@@ -78,25 +62,6 @@ export default {
       InquilinoDataService.get(id)
         .then(response => {
           this.currentInquilino = response.data
-          console.log(response.data)
-        })
-        .catch(e => {
-          console.log(e)
-        })
-    },
-
-    updatePublished (status) {
-      var data = {
-        id: this.currentInquilino.id,
-        nome: this.currentInquilino.nomeInquilino,
-        cpf: this.currentInquilino.cpfInquilino,
-        dataNascimento: this.currentInquilino.dataNascimento,
-        published: status
-      }
-
-      InquilinoDataService.update (this.currentInquilino.id, data)
-        .then(response => {
-          this.currentInquilino.published = status
           console.log(response.data)
         })
         .catch(e => {

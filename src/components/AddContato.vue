@@ -64,8 +64,7 @@ export default {
         id: null,
         nome: "",
         tipo: "",
-        contato: "",
-        published: false
+        contato: ""
       },
       submitted: false
     };

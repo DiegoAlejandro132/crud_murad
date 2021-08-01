@@ -75,7 +75,7 @@ export default new Router({
     {
       path: "/inquilino_detalhes/:id",
       name: "inquilino-detalhes",
-      path: () => import("./components/Inquilino")
+      component: () => import("./components/Inquilino")
     }
   ]
 });

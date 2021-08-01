@@ -16,23 +16,7 @@
         />
       </div>
 
-      <div class="form-group">
-        <label><strong>Status:</strong></label>
-        {{ currentEndereço.published ? "Published" : "Pending" }}
-      </div>
     </form>
-
-    <button class="badge badge-primary mr-2"
-      v-if="currentEndereco.published"
-      @click="updatePublished(false)"
-    >
-      UnPublish
-    </button>
-    <button v-else class="badge badge-primary mr-2"
-      @click="updatePublished(true)"
-    >
-      Publish
-    </button>
 
     <button class="badge badge-danger mr-2"
       @click="deleteEndereco"
@@ -71,24 +55,6 @@ export default {
       EnderecoDataService.get(id)
         .then(response => {
           this.currentEndereco = response.data
-          console.log(response.data)
-        })
-        .catch(e => {
-          console.log(e)
-        })
-    },
-
-    updatePublished (status) {
-      var data = {
-        id: this.currentEndereco.id,
-        title: this.currentEndereco.title,
-        description: this.currentEndereco.description,
-        published: status
-      }
-
-      EnderecoDataService.update (this.currentEndereco.id, data)
-        .then(response => {
-          this.currentEndereco.published = status
           console.log(response.data)
         })
         .catch(e => {
