@@ -1,35 +1,36 @@
 
 <template>
-  <div v-if="currentCliente" class="edit-form">
-    <h4>Cliente</h4>
+  <div v-if="currentInquilino" class="edit-form">
+    <h4>Inquilino</h4>
     <form>
       <div class="form-group">
         <label for="nome">Nome</label>
         <input type="text" class="form-control" id="nome"
-          v-model="currentCliente.nomeCliente"
+          v-model="currentInquilino.nomeInquilino"
         />
       </div>
       <div class="form-group">
         <label for="cpf">CPF</label>
         <input type="text" class="form-control" id="cpf"
-          v-model="currentCliente.cpfCliente"
+          v-model="currentInquilino.cpfInquilino"
         />
       </div>
+
       <div class="form-group">
-        <label for="data_nascimento">Data de nascimento</label>
-        <input type="date" class="form-control" id="data_nascimento"
-          v-model="currentCliente.dataNascimentoCliente"
+        <label for="dataNascimento">Data de nascimento</label>
+        <input type="date" class="form-control" id="dataNascimento"
+          v-model="currentInquilino.dataNascimentoInquilino"
         />
       </div>
 
       <div class="form-group">
         <label><strong>Status:</strong></label>
-        {{ currentCliente.published ? "Published" : "Pending" }}
+        {{ currentInquilino.published ? "Published" : "Pending" }}
       </div>
     </form>
 
     <button class="badge badge-primary mr-2"
-      v-if="currentCliente.published"
+      v-if="currentInquilino.published"
       @click="updatePublished(false)"
     >
       UnPublish
@@ -41,13 +42,13 @@
     </button>
 
     <button class="badge badge-danger mr-2"
-      @click="deleteCliente"
+      @click="deleteInquilino"
     >
       Delete
     </button>
 
     <button type="submit" class="badge badge-success"
-      @click="updateCliente"
+      @click="updateInquilino"
     >
       Update
     </button>
@@ -56,27 +57,27 @@
 
   <div v-else>
     <br />
-    <p>Please click on a Cliente...</p>
+    <p>Please click on a Inquilino...</p>
   </div>
 </template>
 
 <script>
-import ClienteDataService from "../services/ClienteDataService";
+import InquilinoDataService from "../services/InquilinoDataService";
 
 export default {
     /* eslint-disable */
-  name: "cliente",
+  name: "Inquilino",
   data() {
     return {
-      currentCliente: null,
+      currentInquilino: null,
       message: ''
     }
   },
   methods: {
-    getCliente (id) {
-      ClienteDataService.get(id)
+    getInquilino (id) {
+      InquilinoDataService.get(id)
         .then(response => {
-          this.currentCliente = response.data[0]
+          this.currentInquilino = response.data
           console.log(response.data)
         })
         .catch(e => {
@@ -86,16 +87,16 @@ export default {
 
     updatePublished (status) {
       var data = {
-        id: this.currentCliente.id,
-        nome: this.currentCliente.nome,
-        cpf: this.currentCliente.cpf,
-        data_nascimento: this.currentCliente.data_nascimento,
+        id: this.currentInquilino.id,
+        nome: this.currentInquilino.nomeInquilino,
+        cpf: this.currentInquilino.cpfInquilino,
+        dataNascimento: this.currentInquilino.dataNascimento,
         published: status
       }
 
-      ClienteDataService.update (this.currentCliente.id, data)
+      InquilinoDataService.update (this.currentInquilino.id, data)
         .then(response => {
-          this.currentCliente.published = status
+          this.currentInquilino.published = status
           console.log(response.data)
         })
         .catch(e => {
@@ -103,22 +104,22 @@ export default {
         })
     },
 
-    updateCliente () {
-      ClienteDataService.update(this.currentCliente.id, this.currentCliente)
+    updateInquilino () {
+      InquilinoDataService.update(this.currentInquilino.id, this.currentInquilino)
         .then(response => {
           console.log(response.data)
-          this.message = 'The cliente was updated successfully!'
+          this.message = 'The Inquilino was updated successfully!'
         })
         .catch(e => {
           console.log(e)
         })
     },
 
-    deleteCliente () {
-      ClienteDataService.delete(this.currentCliente.id)
+    deleteInquilino () {
+      InquilinoDataService.delete(this.currentInquilino.id)
         .then(response => {
           console.log(response.data)
-          this.$router.push({ name: "clientes" })
+          this.$router.push({ name: "inquilinos" })
         })
         .catch(e => {
           console.log(e)
@@ -127,7 +128,7 @@ export default {
   },
   mounted () {
     this.message = ''
-    this.getCliente(this.$route.params.id)
+    this.getInquilino(this.$route.params.id)
   }
 }
 </script>

@@ -17,13 +17,23 @@ export default new Router({
       name: "tutorial-details",
       component: () => import("./components/Tutorial")
     },
-    {
-      path: "/add-contato",
+    {                               //rotas contatos
+      path: "/add-contato",    
       name: "addContato",
       component: () => import("./components/AddContato")
     },
     {
-      path: "/add-cliente",
+      path: "/lista_contato",
+      name: "lista_contatos",
+      component: () => import("./components/ContatoList")
+    },
+    {
+      path: "/contato_detalhes/:id",
+      name: "contato_detalhes",
+      component: () => import("./components/Contato")
+    },
+    {                               //rotas clientes
+      path: "/add-cliente",       
       name: "addCliente",
       component: () => import("./components/AddCliente")
     },
@@ -33,19 +43,39 @@ export default new Router({
       component: () => import("./components/ClienteList")
     },
     {
-      path: "/cliente-detalhes",
+      path: "/cliente_detalhes/:id",
       name: "cliente-detalhes",
       component: () => import("./components/Cliente")
     },
-    {
+    {                                   //rotas endereco
       path: "/add-endereco",
       name: "addEndereco",
       component: () => import("./components/AddEndereco")
     },
     {
+      path: "/lista_enderecos",
+      nome: "lista-enderecos",
+      component: () => import("./components/EnderecoList")
+    },
+    {
+      path: "/endereco_detalhes/:id",
+      name: "endereco-detalhes",
+      component: () => import("./components/Endereco")
+    },
+    {                                   //rotas inquilino
       path: "/add-inquilino",
       name: "addInquilino",
       component: () => import("./components/AddInquilino")
+    },
+    {
+      path: "/lista_inquilinos",
+      name: "lista-inquilinos",
+      component: () => import("./components/InquilinoList")
+    },
+    {
+      path: "/inquilino_detalhes/:id",
+      name: "inquilino-detalhes",
+      path: () => import("./components/Inquilino")
     }
   ]
 });

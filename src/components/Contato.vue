@@ -1,35 +1,42 @@
 
 <template>
-  <div v-if="currentCliente" class="edit-form">
-    <h4>Cliente</h4>
+  <div v-if="currentContato" class="edit-form">
+    <h4>Contato</h4>
     <form>
       <div class="form-group">
         <label for="nome">Nome</label>
         <input type="text" class="form-control" id="nome"
-          v-model="currentCliente.nomeCliente"
+          v-model="currentContato.nome"
         />
       </div>
       <div class="form-group">
-        <label for="cpf">CPF</label>
-        <input type="text" class="form-control" id="cpf"
-          v-model="currentCliente.cpfCliente"
+        <label for="contato">Contato</label>
+        <input type="text" class="form-control" id="contato"
+          v-model="currentContato.contato"
         />
       </div>
-      <div class="form-group">
-        <label for="data_nascimento">Data de nascimento</label>
-        <input type="date" class="form-control" id="data_nascimento"
-          v-model="currentCliente.dataNascimentoCliente"
-        />
+        <div>
+        <select
+            class="form-group"
+            id="tipo"
+            placeholder="Tipo de contato"
+            v-model="currentContato.tipo"
+            name="tipo_contato"
+            >
+                <option value="telefone">Telefone</option>
+                <option value="email">E-mail</option>
+
+            </select>
       </div>
 
       <div class="form-group">
         <label><strong>Status:</strong></label>
-        {{ currentCliente.published ? "Published" : "Pending" }}
+        {{ currentContato.published ? "Published" : "Pending" }}
       </div>
     </form>
 
     <button class="badge badge-primary mr-2"
-      v-if="currentCliente.published"
+      v-if="currentContato.published"
       @click="updatePublished(false)"
     >
       UnPublish
@@ -41,13 +48,13 @@
     </button>
 
     <button class="badge badge-danger mr-2"
-      @click="deleteCliente"
+      @click="deleteContato"
     >
       Delete
     </button>
 
     <button type="submit" class="badge badge-success"
-      @click="updateCliente"
+      @click="updateContato"
     >
       Update
     </button>
@@ -56,27 +63,27 @@
 
   <div v-else>
     <br />
-    <p>Please click on a Cliente...</p>
+    <p>Please click on a Contato...</p>
   </div>
 </template>
 
 <script>
-import ClienteDataService from "../services/ClienteDataService";
+import ContatoDataService from "../services/ContatoDataService";
 
 export default {
     /* eslint-disable */
-  name: "cliente",
+  name: "contato",
   data() {
     return {
-      currentCliente: null,
+      currentContato: null,
       message: ''
     }
   },
   methods: {
-    getCliente (id) {
-      ClienteDataService.get(id)
+    getContato (id) {
+      ContatoDataService.get(id)
         .then(response => {
-          this.currentCliente = response.data[0]
+          this.currentContato = response.data
           console.log(response.data)
         })
         .catch(e => {
@@ -86,16 +93,16 @@ export default {
 
     updatePublished (status) {
       var data = {
-        id: this.currentCliente.id,
-        nome: this.currentCliente.nome,
-        cpf: this.currentCliente.cpf,
-        data_nascimento: this.currentCliente.data_nascimento,
+        id: this.currentContato.id,
+        nomeContato: this.currentContato.nome,
+        contato: this.currentContato.contato,
+        tipo: this.currentContato.tipo,
         published: status
       }
 
-      ClienteDataService.update (this.currentCliente.id, data)
+      ContatoDataService.update (this.currentContato.id, data)
         .then(response => {
-          this.currentCliente.published = status
+          this.currentContato.published = status
           console.log(response.data)
         })
         .catch(e => {
@@ -103,22 +110,22 @@ export default {
         })
     },
 
-    updateCliente () {
-      ClienteDataService.update(this.currentCliente.id, this.currentCliente)
+    updateContato () {
+      ContatoDataService.update(this.currentContato.id, this.currentContato)
         .then(response => {
           console.log(response.data)
-          this.message = 'The cliente was updated successfully!'
+          this.message = 'The contato was updated successfully!'
         })
         .catch(e => {
           console.log(e)
         })
     },
 
-    deleteCliente () {
-      ClienteDataService.delete(this.currentCliente.id)
+    deleteContato () {
+      ContatoDataService.delete(this.currentContato.id)
         .then(response => {
           console.log(response.data)
-          this.$router.push({ name: "clientes" })
+          this.$router.push({ name: "contatos" })
         })
         .catch(e => {
           console.log(e)
@@ -127,7 +134,7 @@ export default {
   },
   mounted () {
     this.message = ''
-    this.getCliente(this.$route.params.id)
+    this.getContato(this.$route.params.id)
   }
 }
 </script>

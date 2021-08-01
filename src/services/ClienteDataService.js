@@ -5,28 +5,28 @@ class ClienteDataService {
     return http.get("/cliente");
   }
 
-  get(cpf) {
-    return http.get(`/cliente/${cpf}`);
+  get(id) {
+    return http.get(`/cliente?id=${id}`);
   }
 
   create(data) {
     return http.post("/cliente", data);
   }
 
-  update(cpf, data) {
-    return http.put(`/cliente/${cpf}`, data);
+  update(id, data) {
+    return http.put(`/cliente/${id}`, data);
   }
 
-  delete(cpf) {
-    return http.delete(`/cliente/${cpf}`);
+  delete(id) {
+    return http.delete(`/cliente/${id}`);
   }
 
   deleteAll() {
     return http.delete(`/cliente`);
   }
 
-  findByTitle(cpf) {
-    return http.get(`/tutorials?nome=${cpf}`);
+  findByTitle(id) {
+    return http.get(`/tutorials?nome=${id}`);
   }
 }
 

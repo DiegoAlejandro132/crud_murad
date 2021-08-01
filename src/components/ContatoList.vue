@@ -2,11 +2,11 @@
   <div class="list row">
     <div class="col-md-8">
       <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Insira o CPF"
-          v-model="cpf"/>
+        <input type="text" class="form-control" placeholder="Search by title"
+          v-model="title"/>
         <div class="input-group-append">
           <button class="btn btn-outline-secondary" type="button"
-            @click="searchCPF"
+            @click="searchTitle"
           >
             Search
           </button>
@@ -14,71 +14,71 @@
       </div>
     </div>
     <div class="col-md-6">
-      <h4>Lista de clientes</h4>
+      <h4>Lista de contatos</h4>
       <ul class="list-group">
         <li class="list-group-item"
           :class="{ active: index == currentIndex }"
-          v-for="(cliente, index) in clientes"
+          v-for="(contato, index) in contatos"
           :key="index"
-          @click="setActiveCliente(cliente, index)"
+          @click="setActiveContato(contato, index)"
         >
-          {{ cliente.cpfCliente }}
+          {{ contato.nomeContato }}
         </li>
       </ul>
 
-      <button class="m-3 btn btn-sm btn-danger" @click="removeAllClientes">
-        Remover clientes
+      <button class="m-3 btn btn-sm btn-danger" @click="removeAllContatos">
+        Remove All
       </button>
     </div>
     <div class="col-md-6">
-      <div v-if="currentCliente">
-        <h4>Cliente</h4>
+      <div v-if="currentContato">
+        <h4>Contato</h4>
         <div>
-          <label><strong>Nome:</strong></label> {{ currentCliente.nomeCliente }}
+          <label><strong>Nome:</strong></label> {{ currentContato.nomeContato }}
         </div>
         <div>
-          <label><strong>CPF:</strong></label> {{ currentCliente.cpfCliente }}
+          <label><strong>Tipo de contato:</strong></label> {{ currentContato.tipo }}
         </div>
         <div>
-          <label><strong>Data de nascimento:</strong></label> {{ currentCliente.dataNascimentoCliente }}
+          <label><strong>Contato:</strong></label> {{ currentContato.contato }}
         </div>
         <div>
-          <label><strong>Status:</strong></label> {{ currentCliente.published ? "Published" : "Pending" }}
+          <label><strong>Status:</strong></label> {{ currentContato.published ? "Published" : "Pending" }}
         </div>
 
         <a style="color:blue" class="badge badge-warning"
-          :href="'/cliente_detalhes/' + currentCliente.id"
-        > 
+          :href="'/contato_detalhes/' + currentContato.id"
+        >
           Editar
         </a>
       </div>
       <div v-else>
         <br />
-        <p>Selecione um cliente</p>
+        <p>Please click on a Contato...</p>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import ClienteDataService from "../services/ClienteDataService";
+import ContatoDataService from "../services/ContatoDataService";
 
 export default {
     /* eslint-disable */
-  name: "clientes-list",
+  name: "contatos-list",
   data() {
     return {
-      clientes: [],
-      currentCliente: null,
+      contatos: [],
+      currentContato: null,
       currentIndex: -1,
-      cpf: ""
+      title: ""
     };
   },
   methods: {
-    retrieveClientes() {
-      ClienteDataService.getAll()
+    retrieveContatos() {
+      ContatoDataService.getAll()
         .then(response => {
-          this.clientes = response.data;
+          this.contatos = response.data;
           console.log(response.data);
         })
         .catch(e => {
@@ -87,19 +87,18 @@ export default {
     },
 
     refreshList() {
-      this.retrieveClientes();
-      this.currentCliente = null;
+      this.retrieveContatos();
+      this.currentContato = null;
       this.currentIndex = -1;
     },
 
-    setActiveCliente(cliente, index) {
-      this.currentCliente = cliente;
+    setActiveContato(contato, index) {
+      this.currentContato = contato;
       this.currentIndex = index;
-      console.log(cliente)
     },
 
-    removeAllClientes() {
-      ClienteDataService.deleteAll()
+    removeAllContatos() {
+      ContatoDataService.deleteAll()
         .then(response => {
           console.log(response.data);
           this.refreshList();
@@ -109,10 +108,10 @@ export default {
         });
     },
     
-    searchCPF() {
-      ClienteDataService.findByTitle(this.cpf)
+    searchTitle() {
+      ContatoDataService.findByTitle(this.nomeContato)
         .then(response => {
-          this.clientes = response.data;
+          this.contatos = response.data;
           console.log(response.data);
         })
         .catch(e => {
@@ -121,7 +120,7 @@ export default {
     }
   },
   mounted() {
-    this.retrieveClientes();
+    this.retrieveContatos();
   }
 };
 </script>
