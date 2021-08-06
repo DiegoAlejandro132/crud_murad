@@ -1,24 +1,20 @@
 <template>
   <div id="app">
     <nav class="navbar navbar-expand navbar-dark bg-dark">
-      <router-link to="/" class="navbar-brand">CrudMuradinho</router-link>
+      <router-link to="/PaginaPrincipal" class="navbar-brand">CrudMuradinho</router-link>
       <div class="navbar-nav mr-auto">
         <li class="nav-item">
-          <router-link to="/tutorials" class="nav-link">Tutorials. (tutoriais)</router-link>
+          <router-link to="/lista_cliente" class="nav-link">Lista Clientes</router-link>
         </li>
         <li class="nav-item">
-          <router-link to="/add-contato" class="nav-link">Add-Contato</router-link>
+          <router-link to="/lista_contato" class="nav-link">Lista Contato</router-link>
         </li>
         <li class="nav-item">
-          <router-link to="/add-cliente" class="nav-link">Add-Cliente</router-link>
+          <router-link to="/lista_enderecos" class="nav-link">Lista Endereços</router-link>
         </li>
         <li class="nav-item">
-          <router-link to="/add-endereco" class="nav-link">Add-Endereco</router-link>
+          <router-link to="/lista_inquilinos" class="nav-link">Lista Inquilinos</router-link>
         </li>
-        <li class="nav-item">
-          <router-link to="/add-inquilino" class="nav-link">Add-Inquilino</router-link>
-        </li>
-
       </div>
     </nav>
 

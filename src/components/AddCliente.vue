@@ -40,11 +40,17 @@
       </div> <br> <br>
 
       <button @click="saveCliente" class="btn btn-success">Confirmar</button>
+      <button class="m-3 btn btn-md btn-warning" @click="goBack()">Voltar</button>
     </div>
 
     <div v-else>
       <h4>Voce cadastrou um cliente com sucesso!</h4>
-      <button class="btn btn-success" @click="newCliente">Add</button>
+      <span>
+        <button class="btn btn-warning" @click="listaCliente">Lista</button>
+      </span>
+      <span>
+        <button class="m-3 btn btn-success" @click="newCliente">Add</button>
+      </span>
     </div>
   </div>
 </template>
@@ -89,6 +95,13 @@ export default {
     newCliente() {
       this.submitted = false;
       this.cliente = {};
+    },
+    
+    listaCliente(){
+      this.$router.push( "/lista_cliente" )
+    },
+    goBack() {
+      window.history.back();
     }
   }
 };

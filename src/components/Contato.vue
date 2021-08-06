@@ -9,7 +9,7 @@
           type="text"
           class="form-control"
           id="nome"
-          v-model="currentContato.nome"
+          v-model="currentContato.nomeContato"
         />
       </div>
       <div class="form-group">
@@ -22,7 +22,8 @@
         />
       </div>
       <div>
-        <select
+          <span>Tipo de contato</span> <br>
+        <select 
           class="form-group"
           id="tipo"
           placeholder="Tipo de contato"
@@ -32,16 +33,21 @@
           <option value="telefone">Telefone</option>
           <option value="email">E-mail</option>
         </select>
+        
       </div>
     </form>
 
-    <button style="background-color:red" class="badge badge-danger mr-2" @click="deleteContato">
+    <button class="mt-3 btn btn-sm btn-outline-danger" @click="deleteContato">
       Delete
     </button>
 
-    <button style="background-color:blue" type="submit" class="badge badge-success" @click="updateContato">
+    <button type="submit" class="mt-3 btn btn-sm btn-outline-primary" @click="updateContato">
       Update
     </button>
+    <button class="mt-3 btn btn-sm btn-outline-warning" @click="goBack()">
+      Voltar
+    </button>
+
     <p>{{ message }}</p>
   </div>
 
@@ -90,12 +96,15 @@ export default {
       ContatoDataService.delete(this.currentContato.id)
         .then((response) => {
           console.log(response.data);
-          this.$router.push({ name: "contatos" });
+          this.$router.push("/lista_contato");
         })
         .catch((e) => {
           console.log(e);
         });
     },
+    goBack() {
+      this.$router.push("/lista_contato");
+    }
   },
   mounted() {
     this.message = "";

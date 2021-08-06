@@ -28,29 +28,29 @@
       <div class="form-group">
         <label for="logradouro">Informe o logradouro</label>
         <input
-        type="text"
+          type="text"
           class="form-control"
           id="logradouro"
           required
           v-model="endereco.logradouro"
           name="logradouro"
         />
-      </div> 
+      </div>
       <div class="form-group">
         <label for="numero">Informe o numero</label>
         <input
-        type="text"
+          type="text"
           class="form-control"
           id="numero"
           required
           v-model="endereco.numero"
           name="numero"
         />
-      </div> 
+      </div>
       <div class="form-group">
         <label for="bairro">Informe o bairro</label>
         <input
-        type="text"
+          type="text"
           class="form-control"
           id="bairro"
           required
@@ -61,7 +61,7 @@
       <div class="form-group">
         <label for="cidade">Informe a cidade</label>
         <input
-        type="text"
+          type="text"
           class="form-control"
           id="cidade"
           required
@@ -72,7 +72,7 @@
       <div class="form-group">
         <label for="estado">Informe o estado</label>
         <input
-        type="text"
+          type="text"
           class="form-control"
           id="estado"
           required
@@ -83,7 +83,7 @@
       <div class="form-group">
         <label for="complemento">Informe o complemento</label>
         <input
-        type="text"
+          type="text"
           class="form-control"
           id="complemento"
           required
@@ -92,13 +92,22 @@
         />
       </div>
 
-      <br> <br>
+      <br />
+      <br />
       <button @click="saveEndereco" class="btn btn-success">Confirmar</button>
+      <button class="m-3 btn btn-md btn-warning" @click="goBack()">
+        Voltar
+      </button>
     </div>
 
     <div v-else>
       <h4>Voce cadastrou um endereco com sucesso!</h4>
-      <button class="btn btn-success" @click="newEndereco">Add</button>
+      <span>
+        <button class="btn btn-success" @click="newEndereco">Add</button>
+      </span>
+      <span>
+        <button class="btn btn-success" @click="voltarLista">Lista</button>
+      </span>
     </div>
   </div>
 </template>
@@ -106,9 +115,8 @@
 <script>
 import EnderecoDataService from "../services/EnderecoDataService"; //é necessario criar endereco dataService
 
-
 export default {
-    /* eslint-disable */
+  /* eslint-disable */
   name: "add-contato",
   data() {
     return {
@@ -117,13 +125,13 @@ export default {
         nome: "",
         cep: "",
         logradouro: "",
-        numero:"",
-        bairro:"",
-        cidade:"",
-        estado:"",
-        complemento:""
+        numero: "",
+        bairro: "",
+        cidade: "",
+        estado: "",
+        complemento: "",
       },
-      submitted: false
+      submitted: false,
     };
   },
   methods: {
@@ -136,26 +144,31 @@ export default {
         bairro: this.endereco.bairro,
         cidade: this.endereco.cidade,
         estado: this.endereco.estado,
-        complemento: this.endereco.complemento
+        complemento: this.endereco.complemento,
       };
 
       EnderecoDataService.create(data)
-        .then(response => {
+        .then((response) => {
           this.endereco.nome = response.data.nomeEndereco;
           console.log(response.data);
           this.submitted = true;
         })
-        .catch(e => {
+        .catch((e) => {
           console.log(e);
         });
     },
-    
+
     newEndereco() {
       this.submitted = false;
       this.cliente = {};
-
-    }
-  }
+    },
+    voltarLista() {
+      this.$router.push("/lista_enderecos");
+    },
+    goBack() {
+      window.history.back();
+    },
+  },
 };
 </script>
 

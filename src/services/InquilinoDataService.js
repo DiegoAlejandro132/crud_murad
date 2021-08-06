@@ -1,33 +1,33 @@
-import http from "../http-common";
+import http from "../http-common"
 
 class InquilinoDataService {
   getAll() {
-    return http.get("/inquilino");
+    return http.get("/inquilino")
   }
 
-  get(cpf) {
-    return http.get(`/inquilino/${cpf}`);
+  get(id) {
+    return http.get(`/inquilino/${id}`)
   }
 
   create(data) {
-    return http.post("/inquilino", data);
+    return http.post("/inquilino", data)
   }
 
-  update(cpf, data) {
-    return http.put(`/inquilino/${cpf}`, data);
+  update(id, data) {
+    return http.put(`/inquilino/${id}`, data)
   }
 
-  delete(cpf) {
-    return http.delete(`/inquilino/${cpf}`);
+  delete(id) {
+    return http.delete(`/inquilino/${id}`)
   }
 
   deleteAll() {
-    return http.delete(`/inquilino`);
+    return http.delete(`/inquilino`)
   }
 
-  findByTitle(cpf) {
-    return http.get(`/inquilino?title=${cpf}`);
+  findBySearch(search) {
+    return http.get(`/inquilino?search=${search}`)
   }
 }
 
-export default new InquilinoDataService();
+export default new InquilinoDataService()

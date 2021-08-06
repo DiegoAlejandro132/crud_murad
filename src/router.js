@@ -17,6 +17,10 @@ export default new Router({
       name: "tutorial-details",
       component: () => import("./components/Tutorial")
     },
+    {
+      path: "/pagina_principal",
+      component: () => import("./components/PaginaPrincipal")
+    },
     {                               //rotas contatos
       path: "/add-contato",    
       name: "addContato",

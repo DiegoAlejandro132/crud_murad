@@ -40,11 +40,18 @@
       </div> <br> <br>
 
       <button @click="saveInquilino" class="btn btn-success">Confirmar</button>
+      <button class="m-3 btn btn-md btn-warning" @click="goBack()">Voltar</button>
     </div>
 
     <div v-else>
       <h4>Voce cadastrou um inquilino com sucesso!</h4>
-      <button class="btn btn-success" @click="newInquilino">Add</button>
+      <span>
+        <button class="btn btn-success" @click="newInquilino">Add</button>
+      </span>
+      <span>
+        <button class="btn btn-warning" @click="voltarLista">Lista</button>
+      </span>
+      
     </div>
   </div>
 </template>
@@ -90,6 +97,12 @@ export default {
       this.submitted = false;
       this.inquilino = {};
 
+    },
+    voltarLista(){
+      this.$router.push("/lista_inquilinos")
+    },
+    goBack() {
+      window.history.back();
     }
   }
 };
