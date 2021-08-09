@@ -106,7 +106,7 @@
         <button class="btn btn-success" @click="newEndereco">Add</button>
       </span>
       <span>
-        <button class="btn btn-success" @click="voltarLista">Lista</button>
+        <button class="m-3 btn btn-warning" @click="voltarLista">Lista</button>
       </span>
     </div>
   </div>

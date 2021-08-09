@@ -1,28 +1,13 @@
-import Vue from "vue";
-import Router from "vue-router";
+import Vue from "vue"
+import Router from "vue-router"
 
-Vue.use(Router);
+Vue.use(Router)
 
 export default new Router({
   mode: "history",
   routes: [
-    {
-      path: "/",
-      alias: "/tutorials",
-      name: "tutorials",
-      component: () => import("./components/TutorialsList")
-    },
-    {
-      path: "/tutorials/:id",
-      name: "tutorial-details",
-      component: () => import("./components/Tutorial")
-    },
-    {
-      path: "/pagina_principal",
-      component: () => import("./components/PaginaPrincipal")
-    },
     {                               //rotas contatos
-      path: "/add-contato",    
+      path: "/add-contato",
       name: "addContato",
       component: () => import("./components/AddContato")
     },
@@ -37,13 +22,18 @@ export default new Router({
       component: () => import("./components/Contato")
     },
     {                               //rotas clientes
-      path: "/add-cliente",       
+      path: "/add-cliente",
       name: "addCliente",
       component: () => import("./components/AddCliente")
     },
     {
       path: "/lista_cliente",
       name: "lista de clientes",
+      component: () => import("./components/ClienteList")
+    },
+    {
+      path: "/",
+      name: "lista de clientes/pagina home",
       component: () => import("./components/ClienteList")
     },
     {
@@ -82,4 +72,4 @@ export default new Router({
       component: () => import("./components/Inquilino")
     }
   ]
-});
+})

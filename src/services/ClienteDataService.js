@@ -6,7 +6,7 @@ class ClienteDataService {
   }
 
   get(id) {
-    return http.get(`/cliente?id=${id}`)
+    return http.get(`/cliente/${id}`)
   }
 
   create(data) {

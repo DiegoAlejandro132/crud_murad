@@ -71,7 +71,7 @@ export default {
     getCliente(id) {
       ClienteDataService.get(id)
         .then((response) => {
-          this.currentCliente = response.data[0];
+          this.currentCliente = response.data;
           console.log(response.data);
         })
         .catch((e) => {
@@ -102,7 +102,7 @@ export default {
     },
     goBack() {
       window.history.back();
-    }
+    },
   },
 
   mounted() {

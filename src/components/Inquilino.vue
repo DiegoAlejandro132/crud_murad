@@ -98,7 +98,7 @@ export default {
       InquilinoDataService.delete(this.currentInquilino.id)
         .then((response) => {
           console.log(response.data);
-          this.$router.push("lista_inquilinos");
+          this.$router.push("/lista_inquilinos");
         })
         .catch((e) => {
           console.log(e);

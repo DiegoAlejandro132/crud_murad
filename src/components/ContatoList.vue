@@ -5,7 +5,7 @@
         <input
           type="text"
           class="form-control"
-          placeholder="Search by title"
+          placeholder="Insira um nome ou contato"
           v-model="search"
         />
         <div class="input-group-append">
